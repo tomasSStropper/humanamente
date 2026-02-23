@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profesionales — HumanaMente</title>
+  <meta name="description" content="Conoce a la Dra. Sonia Azofeifa Rojas, Licenciada en Psicología Clínica de la Universidad Latina de Costa Rica." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(155deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      padding: 140px 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .page-hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dorado-claro);
+      background: rgba(201, 168, 76, 0.15);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--blanco);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.7);
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* ===== PROFILE SECTION ===== */
+    .profile-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .profile-main {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .profile-photo-col {
+      position: sticky;
+      top: 100px;
+    }
+
+    .profile-photo-wrap {
+      position: relative;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 24px;
+      box-shadow: var(--sombra-hover);
+    }
+
+    .profile-photo-badge {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(45, 90, 61, 0.95), transparent);
+      border-radius: 0 0 24px 24px;
+      padding: 2rem 1.5rem 1.5rem;
+      color: white;
+    }
+
+    .profile-photo-badge strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .profile-photo-badge span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.05em;
+    }
+
+    .profile-contact-quick {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .profile-contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: 1px solid rgba(168,191,171,0.3);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      text-decoration: none;
+      color: var(--gris-texto);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+
+    .profile-contact-btn:hover {
+      border-color: var(--verde-claro);
+      transform: translateX(4px);
+      box-shadow: var(--sombra);
+    }
+
+    .profile-contact-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .profile-contact-btn.wa svg { fill: #25D366; }
+    .profile-contact-btn.mail svg { fill: var(--verde-oscuro); }
+
+    /* ===== PROFILE INFO ===== */
+    .profile-info {
+      padding-top: 0.5rem;
+    }
+
+    .profile-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .profile-eyebrow-line {
+      width: 35px;
+      height: 1px;
+      background: var(--dorado);
+    }
+
+    .profile-eyebrow span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+    }
+
+    .profile-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--verde-oscuro);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-title {
+      font-size: 0.88rem;
+      color: var(--gris-suave);
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+    }
+
+    .profile-bio {
+      font-size: 1rem;
+      color: var(--gris-texto);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      font-style: italic;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--dorado);
+    }
+
+    .profile-description {
+      font-size: 0.95rem;
+      color: var(--gris-suave);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+
+    /* CREDENCIALES */
+    .credentials {
+      margin-bottom: 2.5rem;
+    }
+
+    .credentials h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .credentials h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--verde-menta);
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--verde-suave);
+    }
+
+    .credential-item:last-child { border-bottom: none; }
+
+    .credential-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--verde-suave);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .credential-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--verde-oscuro);
+    }
+
+    .credential-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gris-texto);
+      margin-bottom: 0.15rem;
+    }
+
+    .credential-text span {
+      font-size: 0.82rem;
+      color: var(--gris-suave);
+    }
+
+    /* ESPECIALIDADES */
+    .specialties {
+      margin-bottom: 2.5rem;
+    }
+
+    .specialties h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .specialties h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--verde-menta);
+    }
+
+    .specialties-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .specialty-tag {
+      background: var(--verde-suave);
+      border: 1px solid var(--verde-menta);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.83rem;
+      color: var(--verde-oscuro);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .specialty-tag::before {
+      content: '✦';
+      color: var(--dorado);
+      font-size: 0.65rem;
+    }
+
+    /* TRUST BANNER */
+    .trust-banner {
+      background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .trust-banner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .trust-banner cite {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 900px) {
+      .profile-main {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-photo-col {
+        position: static;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+
+      .specialties-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.jpg" alt="HumanaMente Logo" />
+        <div>
+          <span class="nav-logo-text">HumanaMente</span>
+          <span class="nav-logo-sub">Consultorio Integral de Psicología</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="funcionarios.html" class="active">Profesionales</a></li>
+        <li><a href="contacto.html" class="nav-cta">Agendar Cita</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <span class="page-hero-tag">Nuestro equipo</span>
+    <h1>Profesionales</h1>
+    <p>Conoce a la especialista detrás de HumanaMente, comprometida con tu bienestar desde hace más de una década.</p>
+  </section>
+
+  <!-- PERFIL -->
+  <div class="profile-section">
+    <div class="profile-main">
+
+      <!-- COLUMNA FOTO -->
+      <div class="profile-photo-col">
+        <div class="profile-photo-wrap">
+          <img src="assets/doctora.jpg" alt="Dra. Sonia Azofeifa Rojas" class="profile-photo" />
+          <div class="profile-photo-badge">
+            <strong>Dra. Sonia Azofeifa</strong>
+            <span>Lic. Psicología Clínica</span>
+          </div>
+        </div>
+        <div class="profile-contact-quick">
+          <a href="https://wa.me/50684195012?text=Hola%20Dra.%20Sonia,%20me%20gustaría%20agendar%20una%20cita" class="profile-contact-btn wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar cita por WhatsApp
+          </a>
+          <a href="mailto:soniaazorpsicologa@gmail.com" class="profile-contact-btn mail">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Escribir por correo
+          </a>
+        </div>
+      </div>
+
+      <!-- COLUMNA INFO -->
+      <div class="profile-info">
+        <div class="profile-eyebrow">
+          <div class="profile-eyebrow-line"></div>
+          <span>Fundadora · Psicóloga Clínica</span>
+        </div>
+        <h1 class="profile-name">Dra. Sonia<br />Azofeifa Rojas</h1>
+        <p class="profile-title">Lic. Psicología Clínica · Graduada 2014 · Universidad Latina de Costa Rica</p>
+
+        <p class="profile-bio">
+          "Creo profundamente en la capacidad de cada persona para crecer, sanar y construir la vida que merece. Mi compromiso es acompañarte en ese camino, con escucha genuina, herramientas reales y un espacio donde puedas ser tú sin filtros."
+        </p>
+
+        <p class="profile-description">
+          La Dra. Sonia Azofeifa Rojas es una psicóloga clínica graduada de la Universidad Latina de Costa Rica en el año 2014. Con más de una década de experiencia, ha dedicado su carrera a brindar atención integral a niños, jóvenes y adultos que buscan mejorar su bienestar emocional y calidad de vida.
+        </p>
+
+        <p class="profile-description">
+          Su enfoque combina la psicología clínica con la psicopedagogía, lo que le permite atender de manera integral tanto los aspectos emocionales como los educativos y conductuales de sus pacientes. En su consultorio en San Vito, Coto Brus, crea un espacio cálido, seguro y sin juicios donde cada persona puede explorar sus emociones y trabajar hacia sus metas personales.
+        </p>
+
+        <!-- CREDENCIALES -->
+        <div class="credentials">
+          <h3>Formación Académica</h3>
+          <div class="credential-item">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V15c0 3.31 3.13 6 7 6s7-2.69 7-6v-3.82L20 9l-8-6zm0 13c-2.21 0-4-1.34-4-3v-2.6l4 2.18 4-2.18V13c0 1.66-1.79 3-4 3z"/></svg>
+            </div>
+            <div class="credential-text">
+              <strong>Licenciatura en Psicología Clínica</strong>
+              <span>Universidad Latina de Costa Rica · 2014</span>
+            </div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+            </div>
+            <div class="credential-text">
+              <strong>Especialidad en Psicopedagogía</strong>
+              <span>Atención a niños, jóvenes y adultos con dificultades de aprendizaje</span>
+            </div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            </div>
+            <div class="credential-text">
+              <strong>Más de 10 años de experiencia clínica</strong>
+              <span>Consultorio en San Vito, Coto Brus, Puntarenas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIALIDADES -->
+        <div class="specialties">
+          <h3>Áreas de Especialidad</h3>
+          <div class="specialties-grid">
+            <span class="specialty-tag">Terapia Individual</span>
+            <span class="specialty-tag">Terapia de Pareja</span>
+            <span class="specialty-tag">Trastornos de Ansiedad</span>
+            <span class="specialty-tag">Depresión y Estado de Ánimo</span>
+            <span class="specialty-tag">Problemas Conductuales</span>
+            <span class="specialty-tag">Psicopedagogía</span>
+            <span class="specialty-tag">Atención a Niños y Jóvenes</span>
+            <span class="specialty-tag">Habilidades Sociales</span>
+          </div>
+        </div>
+
+        <!-- TRUST BANNER -->
+        <div class="trust-banner">
+          <p>"Cada persona merece un espacio seguro para ser escuchada, comprendida y acompañada. Ese es el corazón de lo que hacemos en HumanaMente."</p>
+          <cite>— Dra. Sonia Azofeifa Rojas</cite>
+        </div>
+
+        <a href="contacto.html" class="btn-primary">Agendar mi primera cita →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="HumanaMente" />
+        <p>Consultorio Integral de Psicología comprometido con tu bienestar emocional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="funcionarios.html">Profesionales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>(506) 8419-5012</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>San Vito, Coto Brus, Puntarenas</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HumanaMente · Todos los derechos reservados</span>
+      <span>Desarrollado por <a href="#">TyT Software & Solutions</a></span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/50684195012?text=Hola,%20deseo%20agendar%20una%20cita%20en%20HumanaMente" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+</body>
+</html>

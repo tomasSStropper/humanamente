@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios — HumanaMente</title>
+  <meta name="description" content="Terapia individual, terapia de pareja y psicopedagogía. Atención presencial y virtual en San Vito, Coto Brus." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(155deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      padding: 140px 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .page-hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dorado-claro);
+      background: rgba(201, 168, 76, 0.15);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--blanco);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.7);
+      max-width: 550px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* ===== SERVICIOS ===== */
+    .services-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .services-category {
+      margin-bottom: 4rem;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--verde-menta);
+    }
+
+    .category-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--verde-suave);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .category-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--verde-oscuro);
+    }
+
+    .category-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--verde-oscuro);
+    }
+
+    .category-header p {
+      font-size: 0.85rem;
+      color: var(--gris-suave);
+      margin-top: 0.15rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      border: 1px solid rgba(168, 191, 171, 0.2);
+      transition: var(--transicion);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--verde-suave), var(--verde-menta));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .service-card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+    }
+
+    .service-card-img-placeholder.ind {
+      background: linear-gradient(135deg, #e8f4ea, #c8deca);
+    }
+
+    .service-card-img-placeholder.par {
+      background: linear-gradient(135deg, #f0e8ea, #dec8ca);
+    }
+
+    .service-card-img-placeholder.ped {
+      background: linear-gradient(135deg, #e8eef4, #c8d0de);
+    }
+
+    .service-card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      color: var(--verde-oscuro);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+    }
+
+    .service-card-body {
+      padding: 1.75rem;
+    }
+
+    .service-card-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-meta-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.75rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    .tag-price {
+      background: var(--verde-oscuro);
+      color: white;
+    }
+
+    .tag-duration {
+      background: var(--verde-suave);
+      color: var(--verde-oscuro);
+      border: 1px solid var(--verde-menta);
+    }
+
+    .tag-modality {
+      background: rgba(201, 168, 76, 0.1);
+      color: var(--dorado);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .service-card-body p {
+      font-size: 0.88rem;
+      color: var(--gris-suave);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-features {
+      list-style: none;
+    }
+
+    .service-features li {
+      font-size: 0.85rem;
+      color: var(--gris-texto);
+      padding: 0.4rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      border-bottom: 1px solid var(--verde-suave);
+    }
+
+    .service-features li:last-child { border-bottom: none; }
+
+    .service-features li::before {
+      content: '✓';
+      color: var(--verde-medio);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-banner-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.jpg" alt="HumanaMente Logo" />
+        <div>
+          <span class="nav-logo-text">HumanaMente</span>
+          <span class="nav-logo-sub">Consultorio Integral de Psicología</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html" class="active">Servicios</a></li>
+        <li><a href="funcionarios.html">Profesionales</a></li>
+        <li><a href="contacto.html" class="nav-cta">Agendar Cita</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <span class="page-hero-tag">Lo que ofrecemos</span>
+    <h1>Nuestros Servicios</h1>
+    <p>Soluciones profesionales en Psicología y Psicopedagogía, adaptadas a las necesidades únicas de cada persona.</p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <div class="services-section">
+
+    <!-- PSICOLOGÍA -->
+    <div class="services-category">
+      <div class="category-header">
+        <div class="category-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 13.05 10 15.42 10c.78 0 1.53-.2 2.19-.54C17.72 10.46 18 11.2 18 12c0 3.31-2.69 6-6 6z"/></svg>
+        </div>
+        <div>
+          <h2>Psicología</h2>
+          <p>Atención presencial y virtual · Para niños, jóvenes y adultos</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <!-- Terapia Individual -->
+        <div class="service-card">
+          <div class="service-card-img-placeholder ind">
+            🧠
+            <span class="service-card-badge">Presencial · Virtual</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Terapia Individual</h3>
+            <div class="service-meta">
+              <span class="service-meta-tag tag-price">₡28,000</span>
+              <span class="service-meta-tag tag-duration">1 hora</span>
+              <span class="service-meta-tag tag-modality">Presencial y Virtual</span>
+            </div>
+            <p>Sesiones personalizadas en un ambiente seguro y confidencial para explorar tus emociones, pensamientos y trabajar hacia tus metas personales.</p>
+            <ul class="service-features">
+              <li>Tratamiento psicoterapéutico personalizado</li>
+              <li>Tratamiento de trastornos mentales</li>
+              <li>Problemas personales y familiares</li>
+              <li>Tratamiento de manías y problemas conductuales</li>
+              <li>Evaluaciones y diagnósticos</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Terapia de Pareja -->
+        <div class="service-card">
+          <div class="service-card-img-placeholder par">
+            💑
+            <span class="service-card-badge">Presencial · Virtual</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Terapia de Pareja</h3>
+            <div class="service-meta">
+              <span class="service-meta-tag tag-price">₡40,000</span>
+              <span class="service-meta-tag tag-duration">1.5 horas</span>
+              <span class="service-meta-tag tag-modality">Presencial y Virtual</span>
+            </div>
+            <p>Un espacio de diálogo y comprensión para fortalecer el vínculo, mejorar la comunicación y resolver conflictos dentro de la relación.</p>
+            <ul class="service-features">
+              <li>Mejora de la comunicación en pareja</li>
+              <li>Resolución de conflictos</li>
+              <li>Tratamiento de problemas de pareja</li>
+              <li>Evaluación y diagnóstico conjunto</li>
+              <li>Herramientas para fortalecer el vínculo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PSICOPEDAGOGÍA -->
+    <div class="services-category">
+      <div class="category-header">
+        <div class="category-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V15c0 3.31 3.13 6 7 6s7-2.69 7-6v-3.82L20 9l-8-6zm0 13c-2.21 0-4-1.34-4-3v-2.6l4 2.18 4-2.18V13c0 1.66-1.79 3-4 3z"/></svg>
+        </div>
+        <div>
+          <h2>Psicopedagogía</h2>
+          <p>Atención presencial · Para niños y jóvenes en etapa escolar</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-card-img-placeholder ped">
+            📚
+            <span class="service-card-badge">Solo Presencial</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Psicopedagogía</h3>
+            <div class="service-meta">
+              <span class="service-meta-tag tag-price">₡25,000</span>
+              <span class="service-meta-tag tag-modality">Presencial</span>
+            </div>
+            <p>Intervención especializada para identificar y abordar dificultades en el aprendizaje, conducta y desarrollo educativo de niños y jóvenes.</p>
+            <ul class="service-features">
+              <li>Evaluación, diagnóstico e intervención educativa</li>
+              <li>Asesoramiento a familias</li>
+              <li>Reforzamiento educativo personalizado</li>
+              <li>Estrategias de aprendizaje y técnicas de estudio</li>
+              <li>Entrenamiento de Habilidades Sociales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA BANNER -->
+  <div style="padding: 0 2rem;">
+    <div class="cta-banner">
+      <h2>¿Listo para comenzar tu proceso?</h2>
+      <p>Agendá tu primera cita hoy. Atendemos con cita previa para garantizarte la mejor experiencia.</p>
+      <div class="cta-banner-buttons">
+        <a href="https://wa.me/50684195012?text=Hola,%20deseo%20agendar%20una%20cita%20en%20HumanaMente" class="btn-gold" target="_blank" rel="noopener">
+          Agendar por WhatsApp
+        </a>
+        <a href="contacto.html" class="btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);">
+          Ver información de contacto
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="HumanaMente" />
+        <p>Consultorio Integral de Psicología comprometido con tu bienestar emocional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="funcionarios.html">Profesionales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>(506) 8419-5012</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>San Vito, Coto Brus, Puntarenas</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HumanaMente · Todos los derechos reservados</span>
+      <span>Desarrollado por <a href="#">TyT Software & Solutions</a></span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/50684195012?text=Hola,%20deseo%20agendar%20una%20cita%20en%20HumanaMente" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+</body>
+</html>

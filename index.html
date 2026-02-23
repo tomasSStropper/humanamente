@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HumanaMente — Consultorio Integral de Psicología</title>
+  <meta name="description" content="Tu espacio de bienestar emocional en San Vito, Coto Brus. Terapia individual, de pareja y psicopedagogía con la Dra. Sonia Azofeifa Rojas." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 4rem;
+      background: linear-gradient(155deg, var(--crema) 0%, var(--verde-suave) 60%, var(--verde-menta) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 191, 171, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--dorado);
+    }
+
+    .hero-eyebrow span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--verde-oscuro);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--dorado);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--gris-suave);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--sombra-hover);
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      border: 1px solid rgba(168, 191, 171, 0.4);
+      pointer-events: none;
+    }
+
+    .hero-logo-big {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(45, 90, 61, 0.15);
+    }
+
+    .hero-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--verde-oscuro);
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      background: var(--verde-suave);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--verde-oscuro);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--gris-suave);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    .floating-badge {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: linear-gradient(135deg, var(--dorado), #e8c060);
+      color: var(--verde-oscuro);
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+      white-space: nowrap;
+    }
+
+    /* ===== SECCIÓN BIENVENIDA ===== */
+    .welcome-section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .welcome-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .welcome-text p {
+      font-size: 0.95rem;
+      color: var(--gris-suave);
+      margin-bottom: 1.25rem;
+      line-height: 1.9;
+    }
+
+    .values-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .values-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      color: var(--gris-texto);
+      border-bottom: 1px solid var(--verde-suave);
+    }
+
+    .values-list li:last-child {
+      border-bottom: none;
+    }
+
+    .value-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--dorado);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .welcome-image-block {
+      position: relative;
+    }
+
+    .welcome-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--sombra-hover);
+    }
+
+    .welcome-img-overlay {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--verde-oscuro);
+      color: white;
+      padding: 1.25rem 1.75rem;
+      border-radius: 16px;
+      box-shadow: var(--sombra);
+    }
+
+    .welcome-img-overlay strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .welcome-img-overlay span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== SERVICIOS PREVIEW ===== */
+    .services-preview {
+      background: var(--verde-oscuro);
+      padding: 5rem 2rem;
+    }
+
+    .services-preview-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: var(--blanco);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .section-header .section-tag {
+      background: rgba(255,255,255,0.1);
+      color: var(--dorado-claro);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .services-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-mini-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: var(--transicion);
+    }
+
+    .service-mini-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(201, 168, 76, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--dorado);
+    }
+
+    .service-mini-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--blanco);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-mini-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    .service-mini-price {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--dorado-claro);
+      background: rgba(201, 168, 76, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .services-preview-footer {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ===== CONTACTO RÁPIDO ===== */
+    .contact-quick {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-quick h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-quick p {
+      font-size: 0.95rem;
+      color: var(--gris-suave);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--sombra);
+      text-decoration: none;
+      color: var(--gris-texto);
+      transition: var(--transicion);
+      border: 1px solid rgba(168, 191, 171, 0.2);
+    }
+
+    .contact-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--sombra-hover);
+      border-color: var(--verde-claro);
+    }
+
+    .contact-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-card-icon.green { background: rgba(37, 211, 102, 0.1); }
+    .contact-card-icon.teal { background: var(--verde-suave); }
+    .contact-card-icon.gold { background: rgba(201, 168, 76, 0.1); }
+
+    .contact-card-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .contact-card-icon.green svg { fill: #25D366; }
+    .contact-card-icon.teal svg { fill: var(--verde-oscuro); }
+    .contact-card-icon.gold svg { fill: var(--dorado); }
+
+    .contact-card-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--verde-oscuro);
+    }
+
+    .contact-card-text span {
+      font-size: 0.82rem;
+      color: var(--gris-suave);
+    }
+
+    .payment-box {
+      background: var(--verde-suave);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid var(--verde-menta);
+    }
+
+    .payment-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 1rem;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .payment-method {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--gris-texto);
+    }
+
+    .payment-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--dorado);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== ANIMACIONES ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-container,
+      .welcome-grid,
+      .contact-quick-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-visual { order: -1; }
+
+      .floating-badge {
+        top: -15px;
+        right: 10px;
+        font-size: 0.72rem;
+      }
+
+      .welcome-img-overlay {
+        bottom: -10px;
+        left: 10px;
+      }
+
+      .services-mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.jpg" alt="HumanaMente Logo" />
+        <div>
+          <span class="nav-logo-text">HumanaMente</span>
+          <span class="nav-logo-sub">Consultorio Integral de Psicología</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="funcionarios.html">Profesionales</a></li>
+        <li><a href="contacto.html" class="nav-cta">Agendar Cita</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>San Vito, Coto Brus · Costa Rica</span>
+        </div>
+        <h1>Tu espacio de<br /><em>bienestar</em><br />emocional</h1>
+        <p class="hero-desc">
+          En HumanaMente, entendemos que cada persona es única y que su viaje hacia el bienestar emocional es individual. Estamos aquí para brindarte apoyo, comprensión y las herramientas que necesitas.
+        </p>
+        <div class="hero-buttons">
+          <a href="contacto.html" class="btn-gold">
+            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--verde-oscuro)"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Agendar Cita
+          </a>
+          <a href="servicios.html" class="btn-outline">Ver Servicios</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating-badge">✦ Con cita previa</div>
+        <div class="hero-card">
+          <img src="assets/logo.jpg" alt="HumanaMente" class="hero-logo-big" />
+          <div class="hero-card-title">HumanaMente</div>
+          <div class="hero-card-sub">Consultorio Integral de Psicología</div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">+10</span>
+              <span class="stat-label">Años de experiencia</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Especialidades</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Profesional</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Modalidades</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIENVENIDA -->
+  <section class="welcome-section">
+    <div class="welcome-grid">
+      <div class="welcome-text">
+        <span class="section-tag">Nuestra Misión</span>
+        <h2>Acompañamos tu camino hacia una vida más plena</h2>
+        <p>
+          En HumanaMente creemos que buscar apoyo psicológico es un acto de valentía y amor propio. Nuestro consultorio es un espacio seguro, cálido y sin juicios, donde cada persona puede explorar su mundo interior con total confianza.
+        </p>
+        <p>
+          Contamos con atención presencial y virtual para mayor comodidad, adaptándonos a las necesidades y ritmo de vida de cada paciente.
+        </p>
+        <ul class="values-list">
+          <li><span class="value-dot"></span> Atención personalizada para niños, jóvenes y adultos</li>
+          <li><span class="value-dot"></span> Sesiones presenciales y virtuales disponibles</li>
+          <li><span class="value-dot"></span> Ambiente seguro, confidencial y sin juicios</li>
+          <li><span class="value-dot"></span> Enfoque integral: psicología y psicopedagogía</li>
+        </ul>
+        <a href="servicios.html" class="btn-primary" style="margin-top:1rem;">Conocer los servicios</a>
+      </div>
+      <div class="welcome-image-block">
+        <img src="assets/doctora.jpg" alt="Dra. Sonia Azofeifa Rojas" class="welcome-img-main" />
+        <div class="welcome-img-overlay">
+          <strong>Dra. Sonia Azofeifa</strong>
+          <span>Lic. Psicología Clínica · Univ. Latina CR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PREVIEW -->
+  <section class="services-preview">
+    <div class="services-preview-inner">
+      <div class="section-header">
+        <span class="section-tag">Lo que ofrecemos</span>
+        <h2>Nuestros Servicios</h2>
+        <p>Soluciones profesionales en psicología y psicopedagogía adaptadas a ti.</p>
+      </div>
+      <div class="services-mini-grid">
+        <div class="service-mini-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3>Terapia Individual</h3>
+          <p>Sesiones personalizadas para trabajar tus emociones, pensamientos y metas de vida.</p>
+          <span class="service-mini-price">₡28,000 · 1 hora</span>
+        </div>
+        <div class="service-mini-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3>Terapia de Pareja</h3>
+          <p>Espacio de diálogo y herramientas para fortalecer la relación y resolver conflictos.</p>
+          <span class="service-mini-price">₡40,000 · 1.5 horas</span>
+        </div>
+        <div class="service-mini-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V15c0 3.31 3.13 6 7 6s7-2.69 7-6v-3.82L20 9l-8-6zm0 13c-2.21 0-4-1.34-4-3v-2.6l4 2.18 4-2.18V13c0 1.66-1.79 3-4 3z"/></svg>
+          </div>
+          <h3>Psicopedagogía</h3>
+          <p>Evaluación e intervención de problemas educativos y conductuales. Asesoría familiar.</p>
+          <span class="service-mini-price">₡25,000 · Presencial</span>
+        </div>
+      </div>
+      <div class="services-preview-footer">
+        <a href="servicios.html" class="btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);">Ver todos los servicios →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO RÁPIDO -->
+  <section class="contact-quick">
+    <div class="contact-quick-grid">
+      <div>
+        <span class="section-tag">Contáctanos</span>
+        <h2>¿Listo para dar el primer paso?</h2>
+        <p>Agendá tu cita con cita previa. Atendemos de forma presencial en San Vito y también de manera virtual desde cualquier lugar.</p>
+        <div class="contact-cards">
+          <a href="https://wa.me/50684195012?text=Hola,%20deseo%20agendar%20una%20cita%20en%20HumanaMente" class="contact-card" target="_blank" rel="noopener">
+            <div class="contact-card-icon green">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>WhatsApp</strong>
+              <span>(506) 8419-5012</span>
+            </div>
+          </a>
+          <a href="mailto:soniaazorpsicologa@gmail.com" class="contact-card">
+            <div class="contact-card-icon teal">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Correo Electrónico</strong>
+              <span>soniaazorpsicologa@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://goo.gl/maps/Pt8WHG79hW1aiG5r5" class="contact-card" target="_blank" rel="noopener">
+            <div class="contact-card-icon gold">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Ubicación</strong>
+              <span>San Vito, Coto Brus, Puntarenas</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="payment-box">
+        <h3>💳 Métodos de Pago</h3>
+        <p style="font-size:0.85rem;color:var(--gris-suave);margin-bottom:1.25rem;">Facilitamos el proceso de pago para tu comodidad.</p>
+        <div class="payment-methods">
+          <div class="payment-method">
+            <span class="payment-dot"></span>
+            <span>📲 SINPE Móvil · (506) 8419-5012</span>
+          </div>
+          <div class="payment-method">
+            <span class="payment-dot"></span>
+            <span>🏦 Transferencia bancaria</span>
+          </div>
+          <div class="payment-method">
+            <span class="payment-dot"></span>
+            <span>💵 Efectivo</span>
+          </div>
+        </div>
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--verde-menta);">
+          <p style="font-size:0.82rem;color:var(--gris-suave);font-style:italic;">
+            "Tu bienestar es nuestra misión. ¡Bienvenido a tu espacio de sanación!"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="HumanaMente" />
+        <p>Consultorio Integral de Psicología comprometido con tu bienestar emocional y desarrollo personal.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="funcionarios.html">Profesionales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>(506) 8419-5012</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span>soniaazorpsicologa@gmail.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>San Vito, Coto Brus, Puntarenas</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HumanaMente · Todos los derechos reservados</span>
+      <span>Desarrollado por <a href="#">TyT Software & Solutions</a></span>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/50684195012?text=Hola,%20deseo%20agendar%20una%20cita%20en%20HumanaMente" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
